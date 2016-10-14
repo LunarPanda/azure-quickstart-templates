@@ -506,7 +506,8 @@
               "BOSH_INIT_URL": "[variables('environment').boshInitUrl]",
               "KEEP_UNREACHABLE_VMS": "[variables('keepUnreachableVMs')]",
               "AUTO_DEPLOY_BOSH": "[parameters('autoDeployBosh')]",
-              "BOSH_VM_SIZE": "[parameters('boshVmSize')]"
+              "BOSH_VM_SIZE": "[parameters('boshVmSize')]",
+	      "AUTO_DEPLOY_CLOUD_FOUNDRY": "[parameters('autoDeployCloudFoundry')]"
             }
           }
         }
