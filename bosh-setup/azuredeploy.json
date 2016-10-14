@@ -86,9 +86,10 @@
     },
     "autoDeployCloudFoundry_test":{
     "type": "string",
-    "defaultValue": "enabled",
+    "defaultValue": "single-vm-cf",
     "allowedValues": [
-    	"enabled",
+    	"single-vm-cf",
+	"multiple-vm-cf",
 	"disabled"
     ],
     "metadata": {
