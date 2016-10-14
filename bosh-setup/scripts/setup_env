@@ -120,18 +120,20 @@ chown -R $username $home_dir
 auto_deploy_bosh=$(get_setting AUTO_DEPLOY_BOSH)
 auto_deploy_cloud_foundry=$(get_setting AUTO_DEPLOY_CLOUD_FOUNDRY)
 
-if [ "$auto_deploy_bosh" != "enabled" && "$auto_deploy_cloud_foundry"=="disabled" ]; then
+if [ "$auto_deploy_bosh" != "enabled" -a "$auto_deploy_cloud_foundry" == "disabled" ]; then
   echo "Finish"
   exit 0
 fi
 
 echo "Start to run deploy_bosh.sh..."
-#su -c "./deploy_bosh.sh" - $username
+su -c "./deploy_bosh.sh" - $username
 
 if [ "$auto_deploy_cloud_foundry" == "single-vm-cf" ];then
   echo "Start to run deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml..."
-elif [ "$auto_deploy_cloud_foundry" == "multiple-vm-cf"];then
+  su -c "./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml" -$username
+elif [ "$auto_deploy_cloud_foundry" == "multiple-vm-cf" ];then
   echo "Start to run deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml..."
+  su -c "./deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml" -$username
 fi
 
 echo "Finish"
