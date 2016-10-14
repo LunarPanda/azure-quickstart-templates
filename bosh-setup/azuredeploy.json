@@ -84,7 +84,7 @@
         "description": "Please check if the region support this VM size https://azure.microsoft.com/en-us/regions/#services. For more information about virtual machine sizes, see https://azure.microsoft.com/en-us/documentation/articles/virtual-machines-linux-sizes/"
       }
     },
-    "autoDeployCloudFoundry_test":{
+    "autoDeployCloudFoundry":{
     "type": "string",
     "defaultValue": "single-vm-cf",
     "allowedValues": [
