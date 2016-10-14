@@ -64,7 +64,7 @@ ssh-keygen -t rsa -f $bosh_key -P "" -C ""
 chmod 400 $bosh_key
 cp $bosh_key $home_dir
 cp "$bosh_key.pub" $home_dir
-
+ 
 echo "Start to generate SSL certificate for cloud foundry..."
 chmod +x create_cert.sh
 cf_key="cloudfoundry.key"
@@ -130,10 +130,10 @@ su -c "./deploy_bosh.sh" - $username
 
 if [ "$auto_deploy_cloud_foundry" == "single-vm-cf" ];then
   echo "Start to run deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml..."
-  su -c "./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml" -$username
+  su -c "./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml" - $username
 elif [ "$auto_deploy_cloud_foundry" == "multiple-vm-cf" ];then
   echo "Start to run deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml..."
-  su -c "./deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml" -$username
+  su -c "./deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml" - $username
 fi
 
 echo "Finish"
