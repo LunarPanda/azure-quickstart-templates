@@ -125,7 +125,6 @@ if [ "$auto_deploy_bosh" != "enabled" -a "$auto_deploy_cloud_foundry" == "disabl
   exit 0
 fi
 
-echo "hello"$auto_deploy_cloud_foundry
 echo "Start to run deploy_bosh.sh..."
 su -c "./deploy_bosh.sh" - $username
 
