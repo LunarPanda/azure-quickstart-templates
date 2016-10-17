@@ -86,8 +86,7 @@ REPLACE_WITH_DIRECTOR_PASSWORD=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9')
 REPLACE_WITH_AGENT_PASSWORD=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9')
 REPLACE_WITH_ADMIN_PASSWORD=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9')
 REPLACE_WITH_HM_PASSWORD=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9')
-REPLACE_WITH_MBUS_PASSWORD=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9')
-sed -i "s/REPLACE_WITH_NATS_PASSWORD/$REPLACE_WITH_NATS_PASSWORD/g" bosh.yml
+REPLACE_WITH_MBUS_PASSWORD=$(openssl rand -base64 16 | tr -dc 'a-zA-Z0-9')sed -i "s/REPLACE_WITH_NATS_PASSWORD/$REPLACE_WITH_NATS_PASSWORD/g" bosh.yml
 sed -i "s/REPLACE_WITH_POSTGRES_PASSWORD/$REPLACE_WITH_POSTGRES_PASSWORD/g" bosh.yml
 sed -i "s/REPLACE_WITH_REGISTRY_PASSWORD/$REPLACE_WITH_REGISTRY_PASSWORD/g" bosh.yml
 sed -i "s/REPLACE_WITH_DIRECTOR_PASSWORD/$REPLACE_WITH_DIRECTOR_PASSWORD/g" bosh.yml
@@ -125,13 +124,14 @@ if [ "$auto_deploy_bosh" != "enabled" -a "$auto_deploy_cloud_foundry" == "disabl
   exit 0
 fi
 
+echo "hello"$auto_deploy_cloud_foundry
 echo "Start to run deploy_bosh.sh..."
 #su -c "./deploy_bosh.sh" - $username
 
-if [ "$auto_deploy_cloud_foundry" == "single-vm-cf" ];then
+if [ "$auto_deploy_cloud_foundry" = "single-vm-cf" ];then
   echo "Start to run deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml..."
 #  su -c "./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml" -$username
-elif [ "$auto_deploy_cloud_foundry" == "multiple-vm-cf" ];then
+elif [ "$auto_deploy_cloud_foundry" = "multiple-vm-cf" ];then
   echo "Start to run deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml..."
 #  su -c "./deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml" -$username
 fi
