@@ -131,10 +131,18 @@ su -c "./deploy_bosh.sh" - $username
 
 if [ "$auto_deploy_cloud_foundry" = "single-vm-cf" ];then
   echo "Start to run deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml..."
-  su -c "./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml" - $username
+  su -c "./deploy_cloudfoundry.sh example_manifests/single-vm-cf.yml << ENDOFMESSAGE
+  
+  yes
+  ENDOFMESSAGE
+  " - $username
 elif [ "$auto_deploy_cloud_foundry" = "multiple-vm-cf" ];then
   echo "Start to run deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml..."
-  su -c "./deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml" - $username
+  su -c "./deploy_cloudfoundry.sh example_manifests/multiple-vm-cf.yml << ENDOFMESSAGE
+  
+  yes
+  ENDOFMESSAGE
+  " - $username
 fi
 
 echo "Finish"
