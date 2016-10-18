@@ -64,7 +64,7 @@ ssh-keygen -t rsa -f $bosh_key -P "" -C ""
 chmod 400 $bosh_key
 cp $bosh_key $home_dir
 cp "$bosh_key.pub" $home_dir
-
+ 
 echo "Start to generate SSL certificate for cloud foundry..."
 chmod +x create_cert.sh
 cf_key="cloudfoundry.key"
