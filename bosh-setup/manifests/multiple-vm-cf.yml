@@ -37,7 +37,7 @@ resource_pools:
     security_group: REPLACE_WITH_NSG_NAME_FOR_CLOUD_FOUNDRY
 
 compilation:
-  workers: 6
+  workers: 5 
   network: cf_private
   reuse_compilation_vms: true
   cloud_properties:
